@@ -7,10 +7,10 @@ version: 2
 updates:
   - package-ecosystem: "docker"
     directory: "/"
-     schedule:
-       interval: "weekly"
-     ignore:
-       - dependency-name: "python"
-         versions: ["~>3.9"]
-     labels:
-       - "automerge"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "automerge"
+    ignore:
+      - dependency-name: "python"
+        versions: ["~>3.9"]
