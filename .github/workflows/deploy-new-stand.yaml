@@ -1,0 +1,29 @@
+name: Deploy new stand
+
+on:
+  workflow_dispatch:
+    inputs:
+      customer:
+        description: customer-name
+        required: true
+
+jobs:
+  prepare:
+    name: Create ArgoCD application
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Install ArgoCD CLI
+        id: install_argocd
+        uses: clowdhaus/argo-cd-action/@main
+        with:
+          version: 2.1.2
+          command: version
+          options: --client
+      
+      - name: check output
+        shell: bash
+        run: echo ${{ steps.install_argocd.outputs.output }}
+    
+  
+    
