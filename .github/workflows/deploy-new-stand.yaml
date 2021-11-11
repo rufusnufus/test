@@ -22,14 +22,14 @@ jobs:
         id: install_argocd
         shell: bash
         run: |
-          curl -sSL -o /tmp/argocd https://github.com/argoproj/argo-cd/releases/download/2.1.2/argocd-linux-amd64
+          curl -sSL -o /tmp/argocd https://github.com/argoproj/argo-cd/releases/download/${{ env.ARGOCD_VERSION }}/argocd-linux-amd64
           chmod +x /tmp/argocd
       
       - name: Check projects
         id: list_projects
         shell: bash
         run: |
-          /tmp/argocd proj list --server ${env.ARGOCD_SERVER} --grpc-web --auth-token=${secrets.ARGOCD_TOKEN} | grep ${github.event.inputs.customer} | awk \'{print \$1}\'
+          /tmp/argocd proj list --server ${{ env.ARGOCD_SERVER }} --grpc-web --auth-token=${{ secrets.ARGOCD_TOKEN }} | grep ${{ github.event.inputs.customer }}
 
 
     
