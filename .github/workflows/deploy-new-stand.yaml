@@ -23,7 +23,7 @@ jobs:
       
       - name: check output
         shell: bash
-        run: echo ${{ steps.install_argocd.outputs.output }}
+        run: echo ${{ steps.install_argocd.outputs.version }}
     
   
     
