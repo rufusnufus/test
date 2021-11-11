@@ -9,7 +9,7 @@ on:
 
 env:
   ARGOCD_SERVER: argocd.dev.hydrosphere.io
-  ARGOCD_VERSION: 2.1.2
+  ARGOCD_VERSION: v2.1.6
 
 
 jobs:
@@ -30,9 +30,7 @@ jobs:
         id: list_projects
         shell: bash
         run: |
-          ls -al /usr/local/bin/argocd
-          argocd version --client
-      # proj list --server ${{ env.ARGOCD_SERVER }} --grpc-web --auth-token=${{ secrets.ARGOCD_TOKEN }} | grep ${{ github.event.inputs.customer }}
+          argocd proj list --server ${{ env.ARGOCD_SERVER }} --grpc-web --auth-token=${{ secrets.ARGOCD_TOKEN }} | grep ${{ github.event.inputs.customer }}
 
 
     
