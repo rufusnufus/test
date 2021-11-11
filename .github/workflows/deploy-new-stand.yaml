@@ -7,6 +7,10 @@ on:
         description: customer-name
         required: true
 
+env:
+  ARGOCD_SERVER: argocd.dev.hydrosphere.io
+
+
 jobs:
   prepare:
     name: Create ArgoCD application
@@ -21,9 +25,18 @@ jobs:
           command: version
           options: --client
       
+      - name: Check projects
+        id: list_projects
+        uses: clowdhaus/argo-cd-action/@main
+        with: 
+          version: 2.1.2
+          command: proj list
+          options: --server ${env.SERVER} --grpc-web --auth-token=${secrets.ARGOCD_TOKEN}
+
       - name: check output
         shell: bash
-        run: echo ${{ steps.install_argocd.outputs.output }}
+        run: echo ${{ steps.list_projects.outputs.output }}
+
     
   
     
