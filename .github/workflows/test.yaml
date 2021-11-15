@@ -20,4 +20,7 @@ jobs:
       
       - name: Run Simple Test
         shell: bash
-        run: java -ea tests/SimpleTest.java
+        run: |
+          javac tests/SimpleTest.java
+          cd tests/
+          java -ea SimpleTest
