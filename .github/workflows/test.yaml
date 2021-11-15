@@ -21,6 +21,5 @@ jobs:
       - name: Run Simple Test
         shell: bash
         run: |
-          javac tests/SimpleTest.java
           cd tests/
           java -ea SimpleTest
