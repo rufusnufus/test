@@ -1,1 +1,1 @@
-FROM python:3.8.11-slim-bullseye as python-base
+FROM python:3.8.13-slim-bullseye as python-base
